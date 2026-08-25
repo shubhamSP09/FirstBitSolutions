@@ -3,7 +3,9 @@
 void main () {
 	int num;
 	int selection;
-	printf("Enter your number to check : ");
+	while(selection != 7){
+	
+	printf("\nEnter your number to check : ");
 	scanf("%d", &num);
 	printf("Press----\n");
 	printf("1. To check number is even odd\n");
@@ -12,6 +14,7 @@ void main () {
 	printf("4. To check number is positive, negative or zero\n");
 	printf("5. To reverse a number\n");
 	printf("6. To find the sum of a digits\n");
+	printf("7 for exit");
 	
 	printf("\nenter your task selaction choose : ");
 	scanf("%d", &selection);
@@ -76,8 +79,11 @@ void main () {
 			temp /= 10;
 		}
 		printf("the sum of all digits of %d is %d", num, sum);
-	} else {
+	} else if(selection == 7){
+		printf("exit");
+	}else {
 		printf("enter your selection choose between 1 to 6");
 	}
+}
 }
 
