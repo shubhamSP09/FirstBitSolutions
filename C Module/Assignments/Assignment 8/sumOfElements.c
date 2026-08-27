@@ -1,12 +1,20 @@
 #include<stdio.h>
-void sumOfElements(int *arr, int size, int *sum){
-	int i;
-	for(i = 0; i < size; i++) {
-		*sum += *arr[i];
-	}
-}
+
 void main() {
-	int size = 5, int sum = 0;
-	int arr[size];
-	sumOfElements(int arr, int size, int &sum);
+	int arr[5], i, sum = 0;
+	
+	for(i = 0; i < 5; i++){
+		printf("Enter value at the index %d : ", i);
+		scanf("%d", &arr[i]);	
+	}
+	
+	for(i = 0; i < 5; i++){
+		printf("%d ", arr[i]);
+	} 
+	
+	for(i = 0; i < 5; i++){
+		sum += arr[i];
+	}
+	
+	printf("\n%d", sum);
 }
