@@ -38,4 +38,6 @@ void main (){
 	
 	printf("\nReversed Array: ");
 	displayArray(arr, size);
+	
+	printf("\n");
 }
