@@ -1,28 +1,34 @@
 #include<stdio.h>
 
-void main () {
-	int arr[5];
-	int num, i, isExist = 1;
-	
+void main() {
+	int arr[5], i;
 	
 	for(i = 0; i < 5; i++){
-		printf("Enter a value at %d : ", i);
-		scanf("%d", &arr[i]);
+		printf("Enter value at the index %d : ", i);
+		scanf("%d", &arr[i]);	
 	}
 	
 	for(i = 0; i < 5; i++){
-		printf("%d\n", arr[i]);
-		if(num == arr[i]){
-			isExist = 1;
-			break;
-		}
-	}
-	printf("Enter a number for serach : ");
+		printf("%d ", arr[i]);
+	} 
+	
+	int num;
+	printf("\nEnter a value for search : ");
 	scanf("%d", &num);
 	
-	if(isExist){
-		printf("Number is exist in array");
+	int isExists;
+	for(i = 0; i < 5; i++){
+		if(num == arr[i]){
+			isExists = i;
+			break;
+		}else {
+			isExists = -1;
+		}
+	}
+	
+	if(isExists == -1){
+		printf("\nNot Found");
 	}else{
-		printf("Number dont exist in array");
+		printf("\nElement found at index %d", isExists);
 	}
 }
