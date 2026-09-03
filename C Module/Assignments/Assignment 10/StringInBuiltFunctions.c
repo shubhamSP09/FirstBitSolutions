@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 
-int main()
+void main()
 {
     char a[50] = "Shubham";
     char b[20];
@@ -44,7 +44,6 @@ int main()
         printf("String b is greater");
     }
 
-    /* First occurrence of a character */
     char *firstOccurrence = strchr(a, 'h');
 
     if (firstOccurrence != NULL) {
@@ -53,7 +52,7 @@ int main()
         printf("\nLetter not found");
     }
 
-    /* Last occurrence of a character */
+   
     char *lastOccurrence = strrchr(b, 'h');
 
     if (lastOccurrence != NULL) {
@@ -70,6 +69,24 @@ int main()
         printf("\nSubstring ham not found");
     }
 
-    return 0;
+    char *result = strchr(a, 'm');
+    if(result != NULL){
+    	printf("\nstrchr : %s", result);
+	}
+	
+	char d[] = "012345shubham";
+	printf("\ncount the char: %d", strspn(d, "1234567890"));
+	
+	char e[] = "shubham1234";
+	printf("\nCount char  until a set appears : %d", strcspn(e, "12345"));
+	
+	char str[] = "apple,banana,mango";
+
+    char *token = strtok(str, ",");
+
+    while (token != NULL) {
+        printf("\n%s", token);
+        token = strtok(NULL, ",");
+    }
 }
 
