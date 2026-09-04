@@ -15,7 +15,7 @@ void displyArray(int *arr, int size){
 	} 
 }
 void additionOfSameSizeArray(int *arr1, int *arr2, int *newArr){
-	int i, j;
+	int i;
 	for(i = 0; i < 5; i++){
 		newArr[i] = arr1[i] + arr2[i];
 	}

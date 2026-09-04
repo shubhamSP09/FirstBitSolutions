@@ -1,21 +1,29 @@
-#include<stdio.h>
-
-void main () {
-	int num = 153;
-	int num_copy = num;
-	int sum = 0;
-	int rem;
-	int i;
+void main(){
+	int num = 11, sum = 0;
+	int count = 0;
 	
-	for(i = num; num > 0;) {
-		rem = num % 10;
-		sum += rem * rem * rem;
-		num /= 10;
+	int temp = num;
+	while(temp != 0){
+		count++;
+		temp /= 10;
+	}
+	temp = num;
+	
+	while(temp != 0){
+		int rem = temp % 10;
+		int power = 1, i;
+		for(i = 0; i < count; i++){
+			power = power * rem;
+		}
+		
+		sum += power;
+		
+		temp /= 10;
 	}
 	
-	if(sum == num_copy) {
-		printf("Armstrong Number");
-	} else {
-		printf("Not Armstrong number");
+	if(num == sum){
+		printf("armstrong");
+	}else{
+		printf("not");
 	}
 }

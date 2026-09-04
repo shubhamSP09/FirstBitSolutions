@@ -1,30 +1,32 @@
 #include <stdio.h>
 
-int main() {
-    int num, numCopy, rem, factSum;
-    int i, remFact;
+void main() {
+    int num, i;
+    int range = 1000;
 
-    for (num = 1; num <= 100; num++) {
+    for(i = 1; i <= range; i++) {
+        
+        num = i;
+        int factSum = 0;
 
-        numCopy = num;
-        factSum = 0;
+        while(num > 0) {
+            
+            int rem = num % 10;
+            int fact = 1;
+            int j;
 
-        while (numCopy > 0) {
-            rem = numCopy % 10;
-
-            remFact = 1;
-            for (i = 1; i <= rem; i++) {
-                remFact *= i;
+            for(j = 1; j <= rem; j++) {
+                fact = fact * j;
             }
 
-            factSum += remFact;
-            numCopy /= 10;
+            factSum = factSum + fact;
+
+            num = num / 10;
         }
 
-        if (factSum == num) {
-            printf("%d is a Strong Number\n", num);
+        if(factSum == i) {
+            printf("%d is a Strong Number\n", i);
         }
     }
-
-    return 0;
 }
+
