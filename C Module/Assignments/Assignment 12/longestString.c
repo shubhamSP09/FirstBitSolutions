@@ -15,7 +15,8 @@ int longestString(char *str1, char *str2){
 void main () {
 	char str1[] = "Shubham";
 	char str2[] = "Shubhan";
-	
+	printf("string 1 = %s", str1);
+	printf("string 2 = %s", str2);
 	int result = longestString(str1, str2);
 	
 	if(result == 1){
