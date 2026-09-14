@@ -4,6 +4,7 @@ struct HR {
 	char name[20];
 	float salaray;
 	float commition;
+	int experience;
 };
 void main (){
 	struct HR h;
@@ -11,6 +12,7 @@ void main (){
 	h.id = 101;
 	h.salaray = 25000;
 	h.commition = 5000;
+	h.experience = 3;
 	
-	printf("%d %s %2f %2f", h.id, h.name, h.salaray, h.commition);
+	printf("%d %s %2f %2f %d", h.id, h.name, h.salaray, h.commition, h.experience);
 }
