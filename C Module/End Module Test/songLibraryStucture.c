@@ -17,9 +17,7 @@ struct musicLibrary addSong(struct musicLibrary *songs, int n, int *ci){
 		scanf("%s", songs[*ci].artist);
 		printf("duration: ");
 		scanf("%f", &songs[*ci].duration);
-		
 		(*ci)++;
-	
 }
 
 struct musicLibrary displaySong(struct musicLibrary *songs, int n){

@@ -1,6 +1,6 @@
 Name 	:-	Shubham Hari Patil.
 FRN		:-	18Jo726/20.
-Batch	:- Jul - August 2026.
+Batch	:- July - August 2026.
 Set		:- Set B.
 
 1. Count Word: 

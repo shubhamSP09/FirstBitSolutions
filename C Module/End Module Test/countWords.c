@@ -1,6 +1,5 @@
 #include<stdio.h>
 
-
 void main(){
 	char str[] = "Shubham Patil";
 	int count = 1;
