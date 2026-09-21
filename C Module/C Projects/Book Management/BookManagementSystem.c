@@ -12,13 +12,12 @@ struct Book {
 };
 
 struct Book *addBook(struct Book *books, int *count, int *id){
-	struct Book *temp;
-	temp = realloc(books, (*count + 1) * sizeof(struct Book));
-	if (temp == NULL) {
+	
+	books = realloc(books, (*count + 1) * sizeof(struct Book));
+	if (books == NULL) {
         printf("\nMemory allocation failed!");
         return books;
     }
-	books = temp;
 	
 	books[*count].bookId = (*id)++;
 	
