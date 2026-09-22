@@ -22,16 +22,16 @@ struct Book *addBook(struct Book *books, int *count, int *id){
 	books[*count].bookId = (*id)++;
 	
 	printf("\nEnter a title of the book : ");
-	scanf(" %49[^\n]", books[*count].title);
+	scanf("%s", books[*count].title);
 	
 	printf("\nEnter a author name : ");
-	scanf(" %49[^\n]", books[*count].author);
+	scanf("%s", books[*count].author);
 	
 	printf("\nEnter a price of the book : ");
 	scanf("%f", &books[*count].price);
 	
 	printf("\nEnter a category of book : ");
-	scanf(" %49[^\n]", books[*count].category);
+	scanf("%s", books[*count].category);
 	
 	printf("\nWhat is the rating of the book: ");
 	scanf("%f", &books[*count].rating);
@@ -112,7 +112,7 @@ void searchBook(struct Book *books, int count){
 		} else if(choice == 2){
 			char title[50];
 			printf("Enter a book name: ");
-			scanf(" %49[^\n]", title);
+			scanf("%s", title);
 			int i = 0;
 			while(i < count){
 				int result = strcmp(title, books[i].title);
@@ -129,7 +129,7 @@ void searchBook(struct Book *books, int count){
 		} else if(choice == 3){
 			char author[50];
 			printf("Enter a author name: ");
-			scanf(" %49[^\n]", author);
+			scanf("%s", author);
 			int i = 0;
 			while(i < count){
 				int result = strcmp(author, books[i].author);
@@ -146,7 +146,7 @@ void searchBook(struct Book *books, int count){
 		} else if(choice == 4){
 			char category[50];
 			printf("Enter a Category : ");
-			scanf(" %49[^\n]", category);
+			scanf("%s", category);
 			int i = 0;
 			while(i < count){
 				int result = strcmp(category, books[i].category);
@@ -216,14 +216,14 @@ void updateBook(struct Book *books, int count){
         if (choice == 1)
         {
             printf("\nEnter new title: ");
-            scanf(" %49[^\n]", books[i].title);
+            scanf("%s", books[i].title);
 
             printf("Title updated successfully!");
         }
         else if (choice == 2)
         {
             printf("\nEnter new author: ");
-            scanf(" %49[^\n]", books[i].author);
+            scanf("%s", books[i].author);
 
             printf("Author updated successfully!");
         }
@@ -237,7 +237,7 @@ void updateBook(struct Book *books, int count){
         else if (choice == 4)
         {
             printf("\nEnter new category: ");
-            scanf(" %49[^\n]", books[i].category);
+            scanf("%s", books[i].category);
 
             printf("Category updated successfully!");
         }
@@ -307,7 +307,6 @@ void sortBooks(struct Book *books, int count){
         return;
     }
 
-    // Allocate memory for the temporary array
     tempBook = malloc(count * sizeof(struct Book));
 
     if(tempBook == NULL){
@@ -315,7 +314,6 @@ void sortBooks(struct Book *books, int count){
         return;
     }
 
-    // Copy original books into tempBook
     i = 0;
     while(i < count){
         tempBook[i] = books[i];
@@ -357,7 +355,6 @@ void sortBooks(struct Book *books, int count){
                 printf("\nInvalid order!");
             }
 
-            // Sort by ID
             else if(choice == 1){
                 if(order == 1){
                     for(i = 0; i < count - 1; i++){
@@ -385,7 +382,6 @@ void sortBooks(struct Book *books, int count){
                 displayAllBooks(tempBook, count);
             }
 
-            // Sort by Price
             else if(choice == 2){
                 if(order == 1){
                     for(i = 0; i < count - 1; i++){
@@ -413,7 +409,6 @@ void sortBooks(struct Book *books, int count){
                 displayAllBooks(tempBook, count);
             }
 
-            // Sort by Rating
             else if(choice == 3){
                 if(order == 1){
                     for(i = 0; i < count - 1; i++){
