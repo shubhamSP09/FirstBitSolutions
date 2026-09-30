@@ -27,14 +27,34 @@ struct Book *addBook(struct Book *books, int *count, int *id){
 	printf("\nEnter a author name : ");
 	scanf("%s", books[*count].author);
 	
-	printf("\nEnter a price of the book : ");
-	scanf("%f", &books[*count].price);
+	float price = -1;
+
+	while(price < 0){
+	    printf("\nEnter a price of the book: ");
+	    scanf("%f", &price);
+	
+	    if(price < 0){
+	        printf("Price cannot be negative!\n");
+	    }
+	}
+	
+	books[*count].price = price;
 	
 	printf("\nEnter a category of book : ");
 	scanf("%s", books[*count].category);
 	
-	printf("\nWhat is the rating of the book: ");
-	scanf("%f", &books[*count].rating);
+	float rating = 0;
+
+	while (rating < 1 || rating > 5) {
+  		printf("\nWhat is the rating of the book (1 - 5): ");
+    	scanf("%f", &rating);
+
+    	if (rating < 1 || rating > 5) {
+    	    printf("Invalid rating! Range (1 - 5)\n");
+    	}
+	}
+
+	books[*count].rating = rating;
 	
 	(*count)++;
 	
@@ -92,6 +112,7 @@ void searchBook(struct Book *books, int count){
 		printf("Enter a choice: ");
 		scanf("%d", &choice);
 		int found = 0;
+		
 		if(choice == 1){
 			int id;
 			printf("\nEnter book id: ");
@@ -109,14 +130,15 @@ void searchBook(struct Book *books, int count){
 			if(found == 0){
 				printf("Book Not Found!");
 			}
-		} else if(choice == 2){
+		} 
+		
+		else if(choice == 2){
 			char title[50];
 			printf("Enter a book name: ");
 			scanf("%s", title);
 			int i = 0;
 			while(i < count){
-				int result = strcmp(title, books[i].title);
-				if(result == 0){
+				if(strstr(books[i].title, title) != NULL){
 					displayBook(books, i);
 					found = 1;
 				}
@@ -126,14 +148,15 @@ void searchBook(struct Book *books, int count){
 			if(found == 0){
 					printf("Book Not Found!");
 			}
-		} else if(choice == 3){
+		} 
+		
+		else if(choice == 3){
 			char author[50];
 			printf("Enter a author name: ");
 			scanf("%s", author);
 			int i = 0;
 			while(i < count){
-				int result = strcmp(author, books[i].author);
-				if(result == 0){
+				if(strstr(books[i].author, author) != NULL){
 					displayBook(books, i);
 					found = 1;
 				}
@@ -143,14 +166,15 @@ void searchBook(struct Book *books, int count){
 			if(found == 0){
 				printf("Book Not Found!");
 			}
-		} else if(choice == 4){
+		} 
+		
+		else if(choice == 4){
 			char category[50];
 			printf("Enter a Category : ");
 			scanf("%s", category);
 			int i = 0;
 			while(i < count){
-				int result = strcmp(category, books[i].category);
-				if(result == 0){
+				if(strstr(books[i].category, category) != NULL){
 					displayBook(books, i);
 					found = 1;
 				}
@@ -160,9 +184,13 @@ void searchBook(struct Book *books, int count){
 			if(found == 0){
 				printf("Book Not Found!");
 			}
-		} else if(choice == 5){
+		} 
+		
+		else if(choice == 5){
 			return;
-		} else {
+		} 
+		
+		else {
 			printf("Please enter a valid choice!");
 		}
 	}
@@ -241,13 +269,23 @@ void updateBook(struct Book *books, int count){
 
             printf("Category updated successfully!");
         }
-        else if (choice == 5)
-        {
-            printf("\nEnter new rating: ");
-            scanf("%f", &books[i].rating);
-
-            printf("Rating updated successfully!");
-        }
+        else if(choice == 5)
+		{
+		    float rating = 0;
+		
+		    while(rating < 1 || rating > 5){
+		        printf("\nEnter new rating (1 - 5): ");
+		        scanf("%f", &rating);
+		
+		        if(rating < 1 || rating > 5){
+		            printf("Invalid rating! Range (1 - 5)\n");
+		        }
+		    }
+		
+		    books[i].rating = rating;
+		
+		    printf("Rating updated successfully!");
+		}
         else if (choice == 6)
         {
             printf("\nBook update completed!");
@@ -440,6 +478,59 @@ void sortBooks(struct Book *books, int count){
 
     free(tempBook);
 }
+
+void bookStatistics(struct Book *books, int count){
+
+    int i;
+
+    float totalPrice = 0;
+    float totalRating = 0;
+
+    float highestPrice = books[0].price;
+    float lowestPrice = books[0].price;
+
+    float highestRating = books[0].rating;
+    float lowestRating = books[0].rating;
+
+    for(i = 0; i < count; i++){
+        totalPrice += books[i].price;
+        totalRating += books[i].rating;
+
+        if(books[i].price > highestPrice){
+            highestPrice = books[i].price;
+        }
+
+        if(books[i].price < lowestPrice){
+            lowestPrice = books[i].price;
+        }
+
+        if(books[i].rating > highestRating){
+            highestRating = books[i].rating;
+        }
+
+        if(books[i].rating < lowestRating){
+            lowestRating = books[i].rating;
+        }
+    }
+
+    float averagePrice = totalPrice / count;
+    float averageRating = totalRating / count;
+
+    printf("\n========== BOOK STATISTICS ==========\n");
+
+    printf("\nTotal Books       : %d", count);
+    printf("\nAverage Price     : %.2f", averagePrice);
+    printf("\nHighest Price     : %.2f", highestPrice);
+    printf("\nLowest Price      : %.2f", lowestPrice);
+
+    printf("\nAverage Rating    : %.2f", averageRating);
+    printf("\nHighest Rating    : %.2f", highestRating);
+    printf("\nLowest Rating     : %.2f", lowestRating);
+
+    printf("\n=====================================\n");
+}
+
+
 void main(){
 	struct Book *books = NULL;
 	int count = 0;
@@ -455,7 +546,7 @@ void main(){
 		printf("4. Update Book\n");
 		printf("5. Delete Book\n");
 		printf("6. Sort Book\n");
-		printf("7. Total Book\n");
+		printf("7. Book Statistics\n");
 		printf("8. Exit\n ");
 		printf("=============================================\n\n");
 		printf("Enter your choice : ");
@@ -474,7 +565,8 @@ void main(){
 		} else if(choice == 6){
 			sortBooks(books, count);
 		} else if(choice == 7){
-			printf("\nTotal Books =  %d", count);
+		    bookStatistics(books, count);
+	
 		} else if(choice == 8){
 			return;
 		} else{
