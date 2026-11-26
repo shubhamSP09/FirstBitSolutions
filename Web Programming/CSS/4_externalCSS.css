@@ -1,0 +1,23 @@
+*{
+    font-family: 'Poppins', sans-serif;
+    padding: 0;
+    margin: 0;
+    background-color: #1f1f1f;
+}
+#sports-title {
+    background-color: #4f6ad6;
+    color: #cde49f;
+    text-align: center;
+    font-size: 2.5rem;
+    margin-top: 1rem;
+}
+.sport-title {
+    color: #4f6ad6;
+    font-size: 1.5rem;
+    margin-top: 1rem;
+}
+.sport-description {
+    color: #cde49f;
+    font-size: 1rem;
+    margin-top: 0.5rem;
+}
